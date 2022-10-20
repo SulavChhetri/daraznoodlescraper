@@ -37,7 +37,7 @@ def ngramcreator(strings,n_grams):
         return finallist
 
 
-quantitylist = ['Packs','packs','Pack of','pcs','Pieces','Pack']
+quantitylist = ['Packs','packs','Pack of','pcs','Pieces','Pack','RamenPack']
 
 def quantitygen(item):
     n_gram = ngramcreator(item,2)
