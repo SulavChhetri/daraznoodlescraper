@@ -55,7 +55,7 @@ def main():
     product_price = list(products['Price'])
     with open('final.csv','w') as file:
         writer = csv.writer(file)
-        writer.writerow(['Name','Quantity','Price'])
+        writer.writerow(['Name','Price','Quantity'])
         for value in range(len(product_name)):
             quantity = quantitygen(product_name[value])
             if quantity==None:
