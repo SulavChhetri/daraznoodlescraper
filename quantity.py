@@ -70,7 +70,7 @@ def main():
     product_price = list(products['Price'])
     with open('final.csv','w') as file:
         writer = csv.writer(file)
-        writer.writerow(['Name','Price','Quantity','Weight'])
+        writer.writerow(['Name','Price','Quantity','Weight','Unit of Weight'])
         for value in range(len(product_name)):
             weight = weightgen(product_name[value])
             quantity = quantitygen(product_name[value])
@@ -79,7 +79,7 @@ def main():
             if weight ==None:
                 writer.writerow([product_name[value],product_price[value],quantity,weight])
                 continue
-            writer.writerow([product_name[value],product_price[value],quantity,weight+' gm'])
+            writer.writerow([product_name[value],product_price[value],quantity,weight,'gm'])
 
         
 
