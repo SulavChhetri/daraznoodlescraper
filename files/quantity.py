@@ -1,8 +1,7 @@
-from asyncio.windows_events import NULL
 import pandas as pd
 import csv
 
-with open('./files/stopwords.txt', 'r')as file:
+with open('stopwords.txt', 'r')as file:
     lines = [line.rstrip('\n') for line in file]
 
 def stopwordsremover(sentence):
@@ -65,7 +64,7 @@ def quantitygen(item):
                             return itee
 
 def main():
-    products = pd.read_csv('./files/output.csv')
+    products = pd.read_csv('output.csv')
     product_name= list(products['Product name'])
     product_price = list(products['Price'])
     with open('final.csv','w') as file:
@@ -80,8 +79,3 @@ def main():
                 writer.writerow([product_name[value],product_price[value],quantity,weight,None])
                 continue
             writer.writerow([product_name[value],product_price[value],quantity,weight,'gm'])
-
-        
-
-
-main()
