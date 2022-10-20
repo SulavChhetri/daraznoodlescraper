@@ -36,10 +36,24 @@ def ngramcreator(strings,n_grams):
             finallist.append(finalstring.lstrip())
         return finallist
 
+def weightgen(item):
+    items = item.split()
+    a = ''.join(items).lower()
+    weight = []
+    for i in range(len(a)):
+        if a[i].isnumeric():
+            if not weight:
+                weight.append(a[i])
+            else:
+                weight.append(a[i])
+                if a[i+1]=='g':
+                    return str(''.join(weight))
+        else:
+            weight= []
 
-quantitylist = ['Packs','packs','Pack of','pcs','Pieces','Pack','RamenPack']
 
 def quantitygen(item):
+    quantitylist = ['Packs','packs','Pack of','pcs','Pieces','Pack','RamenPack']
     n_gram = ngramcreator(item,2)
     for items in n_gram:
         if not (''.join(items.split()).isalpha()):
@@ -55,13 +69,17 @@ def main():
     product_price = list(products['Price'])
     with open('final.csv','w') as file:
         writer = csv.writer(file)
-        writer.writerow(['Name','Price','Quantity'])
+        writer.writerow(['Name','Price','Quantity','Weight'])
         for value in range(len(product_name)):
+            weight = weightgen(product_name[value])
             quantity = quantitygen(product_name[value])
             if quantity==None:
-                writer.writerow([product_name[value],product_price[value],1])
-            else:
-                writer.writerow([product_name[value],product_price[value],quantity])
+                quantity =1
+            if weight ==None:
+                weight = str(quantity) + " Pack"
+                writer.writerow([product_name[value],product_price[value],quantity,weight])
+                continue
+            writer.writerow([product_name[value],product_price[value],quantity,weight+' gm'])
 
         
 
