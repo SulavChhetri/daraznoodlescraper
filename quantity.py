@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 import pandas as pd
 import csv
 
@@ -76,13 +77,11 @@ def main():
             if quantity==None:
                 quantity =1
             if weight ==None:
-                weight = str(quantity) + " Pack"
                 writer.writerow([product_name[value],product_price[value],quantity,weight])
                 continue
             writer.writerow([product_name[value],product_price[value],quantity,weight+' gm'])
 
         
-
 
 
 main()
