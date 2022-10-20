@@ -77,7 +77,7 @@ def main():
             if quantity==None:
                 quantity =1
             if weight ==None:
-                writer.writerow([product_name[value],product_price[value],quantity,weight])
+                writer.writerow([product_name[value],product_price[value],quantity,weight,None])
                 continue
             writer.writerow([product_name[value],product_price[value],quantity,weight,'gm'])
 
